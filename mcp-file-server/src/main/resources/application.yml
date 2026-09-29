@@ -1,0 +1,21 @@
+spring:
+  main:
+    # A STDIO MCP server talks JSON-RPC over stdout - Spring Boot's own
+    # startup banner would print into that same stream and corrupt every
+    # message the client tries to parse, so both have to be turned off/
+    # redirected here.
+    banner-mode: off
+    web-application-type: none
+
+  ai:
+    mcp:
+      server:
+        name: file-reader-server
+        version: 0.0.1
+        stdio: true
+
+# Logging destination is controlled entirely by logback-spring.xml (file
+# only, no console) - see the comment there for why.
+logging:
+  file:
+    name: mcp-file-server.log

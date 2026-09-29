@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: mcp-auth-server
+
+  security:
+    oauth2:
+      authorizationserver:
+        issuer: http://localhost:9000
+        client:
+          mcp-client:
+            registration:
+              client-id: mcp-client
+              client-secret: "{noop}mcp-secret"
+              client-authentication-methods:
+                - client_secret_basic
+              authorization-grant-types:
+                - client_credentials
+              scopes:
+                - mcp.read
+            token:
+              access-token-time-to-live: 10m
+
+server:
+  port: 9000

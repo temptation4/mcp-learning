@@ -1,0 +1,66 @@
+spring:
+  application:
+    name: mcp-client-demo
+
+  security:
+    oauth2:
+      client:
+        registration:
+          authserver-client-credentials:
+            client-id: mcp-client
+            client-secret: mcp-secret
+            authorization-grant-type: client_credentials
+            provider: authserver
+
+        provider:
+          authserver:
+            issuer-uri: http://localhost:9000
+
+  ai:
+    model:
+      chat: ollama
+
+    ollama:
+      base-url: http://localhost:11434
+
+      chat:
+        options:
+          model: llama3.2
+
+      embedding:
+        model: all-minilm
+
+    mcp:
+      client:
+        enabled: true
+        name: mcp-client-demo
+        version: 1.0.0
+        type: SYNC
+
+        stdio:
+          connections:
+            file-server:
+              command: java
+              args:
+                - "-jar"
+                - "/Users/neelu/Documents/code/mcp-learning/mcp-file-server/target/mcp-file-server-0.0.1-SNAPSHOT.jar"
+
+        streamable-http:
+          connections:
+            time-server:
+              url: http://localhost:8082
+              endpoint: /mcp
+
+
+
+
+
+            database-server:
+              url: http://localhost:8083
+              endpoint: /mcp
+
+
+
+
+server:
+  port: 8091

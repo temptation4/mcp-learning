@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: mcp-time-server
+
+  ai:
+    mcp:
+      server:
+        protocol: STREAMABLE
+        name: time-server
+        version: 0.0.1
+        type: SYNC
+
+server:
+  port: 8082
+
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000
