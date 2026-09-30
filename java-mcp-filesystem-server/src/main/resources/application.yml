@@ -1,0 +1,15 @@
+spring:
+  main:
+    banner-mode: off
+    web-application-type: none
+
+  ai:
+    mcp:
+      server:
+        name: java-mcp-filesystem-server
+        version: 0.1.0
+        stdio: true
+
+mcp:
+  filesystem:
+    allowed-directories: ${MCP_FILESYSTEM_ALLOWED_DIRECTORIES:}
